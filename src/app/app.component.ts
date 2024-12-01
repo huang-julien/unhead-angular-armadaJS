@@ -1,14 +1,11 @@
 import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
- import { useHead } from 'unhead';
-import { TitleEditor } from "./components/title-editor/title-editor.component";
-import { NgIf } from '@angular/common';
-import { ConfettiButton } from "./components/confetti-button/confetti-button.component";
+import { useHead } from 'unhead';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TitleEditor, NgIf, ConfettiButton],
+  imports: [RouterOutlet,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
