@@ -4,5 +4,6 @@ import { AppComponent } from './app/app.component';
 import { createHead } from 'unhead';
 
 createHead()
+
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));

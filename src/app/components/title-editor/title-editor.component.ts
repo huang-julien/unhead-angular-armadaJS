@@ -16,18 +16,20 @@ import { useHead } from "unhead";
 })
 export class TitleEditor implements OnDestroy {
     title = '';
-    head = useHead({ title: 'Unhead --- Angular' });
+    head?: ReturnType<typeof useHead>
 
     onSubmit() {
         if (this.head) {
             this.head.patch({ title: this.title });
+        } else {
+            this.head = useHead({ title: this.title });
         }
-        this.head = useHead({ title: this.title });
     }
 
     ngOnDestroy(): void {
         if (this.head) {
             this.head.dispose()
+            this.head = undefined
         }
     }
 }
