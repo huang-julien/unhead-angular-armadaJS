@@ -18,6 +18,14 @@ export class AppComponent implements AfterViewInit {
   showTitleEditor = true;
 
   ngAfterViewInit(): void {
-    useHead({ title: 'Unhead --- Angular' });
+    useHead({
+      title: 'Unhead angular',
+      meta: [
+        {
+          name: 'description',
+          content: 'Hello armada'
+        }
+      ]
+    });
   }
 }

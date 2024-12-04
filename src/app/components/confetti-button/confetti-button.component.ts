@@ -28,6 +28,7 @@ export class ConfettiButton {
                 return { confetti: window.confetti }
             },
         })
+
         this.scriptInstance.onLoaded((script) => {
             this.loaded = true
             script.confetti()
