@@ -1,14 +1,6 @@
 import { Component } from "@angular/core";
-import { useScript } from "unhead";
 
-interface confetti {
-    confetti: () => void
-}
-
-declare global {
-    interface Window extends confetti { }
-}
-
+// https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1
 @Component({
     standalone: true,
     selector: 'confetti-button',
@@ -18,28 +10,14 @@ declare global {
 })
 export class ConfettiButton {
     loaded = false
-    scriptInstance
+    scriptInstance: any
 
     constructor() {
-        this.scriptInstance = useScript<confetti>({
-            src: 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1',
-        }, {
-            use() {
-                return { confetti: window.confetti }
-            },
-        })
-
-        this.scriptInstance.onLoaded((script) => {
-            this.loaded = true
-            script.confetti()
-        })
     }
 
     addConfetti() {
         if (this.loaded) {
-            this.scriptInstance.then(({ confetti }) => {
-                confetti()
-            })
+            
         }
     }
 }
