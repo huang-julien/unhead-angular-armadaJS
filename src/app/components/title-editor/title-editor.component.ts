@@ -1,5 +1,6 @@
 import { FormsModule } from "@angular/forms";
 import { Component, OnDestroy } from "@angular/core";
+import { useHead } from "unhead";
  
 @Component({
     standalone: true,
@@ -15,12 +16,23 @@ import { Component, OnDestroy } from "@angular/core";
 })
 export class TitleEditor implements OnDestroy {
     title = ''; 
+    headEntry?: ReturnType<typeof useHead>
 
     onSubmit() {
+        if(this.headEntry) {
+            this.headEntry.patch({
+                title: this.title
+            })
+        } else {
+
+            this.headEntry =  useHead({
+                title: this.title
+            })
+        }
         
     }
 
     ngOnDestroy(): void {
-         
+         this.headEntry?.dispose()
     }
 }
